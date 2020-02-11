@@ -11,6 +11,19 @@ Unknown Category
 
 {% block body_block %}
 {% if category %}
+{% for c in categories %}
+{% if c == current_category %}
+<li>
+<strong>
+<a href="{% url 'rango:show_category' c.slug %}">{{ c.name }}</a>
+</strong>
+</li>
+{% else %}
+<li>
+<a href="{% url 'rango:show_category' c.slug %}">{{ c.name }}</a>
+</li>
+{% endif %}
+{% endfor %}
 <h1>{{ category.name }}</h1>
 {% if pages %}
 <ul>
